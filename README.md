@@ -64,6 +64,20 @@ dependencies {
 
 4. Create a basic command
 
+Java
+
+```java
+@Command("echo")
+class EchoCommand {
+    @Command.Default
+    void echo(CommandSender sender, @Param(infinite = true) String text) {
+        sender.sendMessage(text);
+    }
+}
+```
+
+Kotlin
+
 ```kotlin
 @Command("echo")
 class EchoCommand {
@@ -76,7 +90,15 @@ class EchoCommand {
 
 5. Register the command
 
+Java
+```java
+CommandManager commandManager = BukkitCommandManager.create(plugin);
+commandManager.registerCommand(new EchoCommand());
+```
+
+Kotlin
+
 ```kotlin
-val commandManager = BukkitCommandManager.create()
+val commandManager = BukkitCommandManager.create(plugin)
 commandManager.registerCommand(EchoCommand())
 ```
